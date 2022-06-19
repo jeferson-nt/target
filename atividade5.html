@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Inverter string</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        main .conteudo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main .resultado {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main .resultado strong {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class='conteudo'>
+            <label for='number'>Digite alguma coisa:</label>
+            <input name='number' type='text' />
+        </div>
+        <div class='resultado'>
+            <strong>A setença invertida ficou:</strong>
+            <span></span>
+        </div>
+    </main>
+    
+    <script>
+        const input = document.querySelector('input');
+        const resultado = document.querySelector('.resultado');
+        const span = document.querySelector('.resultado span');
+        const strong = document.querySelector('.resultado strong');
+
+        input.addEventListener('keyup', function(e) {  
+            if (e.target.value !== '') {
+                let invertida = '';
+
+                for (var i = e.target.value.length - 1; i >= 0; i--) {
+                    invertida = invertida + e.target.value[i];
+                }
+
+                span.innerHTML = invertida;      
+            } else {
+                span.innerHTML = 'O campo está vazio';   
+                strong.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

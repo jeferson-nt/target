@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Fibonacci</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        main .conteudo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main .resultado {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class='conteudo'>
+            <label for='number'>Digite um número:</label>
+            <input name='number' type='text' />
+        </div>
+        <div class='resultado'>
+            <strong></strong>
+        </div>
+    </main>
+    
+    <script>
+        const input = document.querySelector('input');
+        const strong = document.querySelector('.resultado strong');
+
+        const vetor = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
+        input.addEventListener('keyup', function(e) {
+            if (e.target.value !== '' && !isNaN(e.target.value)) {
+                const disponivel = vetor.find(value => value == e.target.value);
+                if (disponivel !== undefined) {
+                    strong.innerHTML = 'O número digitado pertence a sequência de Fibonacci';
+                } else {
+                    strong.innerHTML = 'O número digitado não pertence a sequência de Fibonacci';
+                }
+            }
+
+            if (isNaN(e.target.value)) {
+                strong.innerHTML = 'Somente números são permitidos!';
+            }
+            if (e.target.value === '') {
+                strong.innerHTML = 'O campo está vazio';   
+            }
+        });
+    </script>
+</body>
+</html>

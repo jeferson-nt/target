@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Porcentagem</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        main .resultado {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main .resultado strong {
+            margin-bottom: 5px;
+        }
+
+        main .resultado span {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class='resultado'>
+            <strong>Abaixo, segue a porcentagem de cada cidade:</strong>
+            <div></div>
+        </div>
+    </main>
+    
+    <script>
+        const resultado = document.querySelector('.resultado');
+
+        const dados = [
+            {
+                cidade: 'SP',
+                valor: 67836.43
+            },
+            {
+                cidade: 'RJ',
+                valor: 36678.66
+            },
+            {
+                cidade: 'MG',
+                valor: 29229.88
+            },
+            {
+                cidade: 'ES',
+                valor: 27165.48
+            },
+            {
+                cidade: 'Outros',
+                valor: 19849.53
+            },
+        ];
+
+        const totalValor = dados.reduce(
+            (valorAnterior, valorAtual) => valorAnterior + valorAtual.valor,
+            0
+        );
+        
+        dados.forEach(item => {
+            const span = document.createElement('span');
+            const calculo = item.valor * 100 / totalValor;
+
+            span.innerHTML = item.cidade + ' > ' + calculo.toFixed(2) + '%';
+            resultado.appendChild(span);
+        });
+    </script>
+</body>
+</html>
